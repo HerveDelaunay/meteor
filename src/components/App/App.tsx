@@ -4,8 +4,8 @@ import InputField from '../InputField/InputField'
 
 const App: React.FC = () => {
 return(
-    <div className='App'>
-        <span className="heading ml-4">Meteor</span>
+    <div className='min-h-screen flex flex-col bg-slate-200'>
+        <h1 className="flex justify-center mt-6 text-3xl">METEOR</h1>
         <InputField/>
     </div>
 )
