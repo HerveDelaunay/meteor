@@ -1,9 +1,15 @@
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ['Roboto'],
+        water: ['Water Brush']
+      }
+    },
   },
   plugins: [],
 }
