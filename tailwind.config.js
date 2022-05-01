@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         roboto: ['Roboto'],
         water: ['Water Brush']
+      },
+      backgroundImage: {
+        'weather-image': "url('/src/assets/small.jpg')"
       }
     },
   },
