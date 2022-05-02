@@ -10,11 +10,11 @@ const InputField: React.FC<Props> = ({city, setCity, handleFormSubmit}) => {
   
   return (
     <form action="submit" 
-      className="flex justify-center my-auto font-roboto"
+      className="flex justify-center mt-60 font-roboto"
       onSubmit={(e) => handleFormSubmit(e)}
     >
       <input type="input" placeholder='Chercher une ville' 
-        className='border border-black rounded p-2 w-2/5 focus:outline-none focus:ring placeholder:italic placeholder:text-roboto-400 shadow-2xl'
+        className='border border-black rounded-full p-2 w-2/5 focus:outline-none focus:ring placeholder:italic placeholder:text-roboto-400 shadow-2xl'
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
