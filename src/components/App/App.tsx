@@ -2,6 +2,7 @@ import './styles.css'
 import React, { useState } from 'react'
 import InputField from '../InputField/InputField'
 import axios from 'axios'
+import DataDisplay from '../DataDisplay/DataDisplay'
 
 
 const App: React.FC = () => {
@@ -13,6 +14,7 @@ const App: React.FC = () => {
 	const handleFormSubmit = (event:React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		getWeatherData()
+		//scrollTo()
 	}
 	const getWeatherData = async () => {
 		try {
@@ -36,9 +38,10 @@ const App: React.FC = () => {
 	}
 	
 	return(
-		<div className='min-h-screen flex flex-col bg-gradient-to-r from-blue-200 via-purple-200 to-pink-100'>
+		<div className='h-max flex flex-col bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
 			<h1 className="flex justify-center mt-20 text-4xl text-gray-600 font-roboto overline">METEOR</h1>
 			<InputField city={city} setCity={setCity} handleFormSubmit={handleFormSubmit}/>
+			<DataDisplay/>
 		</div>
 	)
 	}
