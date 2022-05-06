@@ -4,11 +4,35 @@ import InputField from '../InputField/InputField'
 import axios from 'axios'
 import DataDisplay from '../DataDisplay/DataDisplay'
 
+interface Weather {
+	id: number, 
+	main: string, 
+	description: string, 
+	icon: string
+}
+interface Main {
+	clouds: {
+		all: number
+	}
+	main: {
+		feels_like : number,
+		humidity: number,
+		pressure: number,
+		temp: number,
+		temp_max: number,
+		temp_min: number
+	}
+	rain: {
+		'1h': number
+	}
+	weather: Array<Weather>
+}
 
 const App: React.FC = () => {
 	const [city, setCity] = useState<string>("");
 	const [lat, setLat] = useState<number>();
 	const [lon, setLon] = useState<number>();
+	const [weatherData, setWeatherData] = useState<Main>()
 	const apiUrl = 'http://api.openweathermap.org'
 	const apiKey= process.env.REACT_APP_API_KEY
 	const handleFormSubmit = (event:React.FormEvent<HTMLFormElement>) => {
@@ -31,9 +55,12 @@ const App: React.FC = () => {
 				url: `${apiUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
 			})
 			console.log(getWeather)
+			console.log(getWeather.data)
+			setWeatherData(getWeather.data)
+			//return getWeather.data	
 		}
 		catch(error){
-			console.log(error);
+			console.error(error);
 		}
 	}
 	
