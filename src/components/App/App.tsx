@@ -29,10 +29,10 @@ interface Main {
 }
 
 const App: React.FC = () => {
-	const [city, setCity] = useState<string>("");
-	const [lat, setLat] = useState<number>();
-	const [lon, setLon] = useState<number>();
-	const [weatherData, setWeatherData] = useState<Main>()
+	const [city, setCity] = useState<string>("")
+	// const [lat, setLat] = useState<number>()
+	// const [lon, setLon] = useState<number>()
+	const [weatherData, setWeatherData] = useState<Main | null>()
 	const apiUrl = 'http://api.openweathermap.org'
 	const apiKey= process.env.REACT_APP_API_KEY
 	const handleFormSubmit = (event:React.FormEvent<HTMLFormElement>) => {
@@ -48,8 +48,8 @@ const App: React.FC = () => {
 			})
 			const lat = getCoordinates.data[0].lat
 			const lon = getCoordinates.data[0].lon
-			setLat(lat)
-			setLon(lon)
+			// setLat(lat)
+			// setLon(lon)
 			const getWeather = await axios({
 				method: 'get',
 				url: `${apiUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
@@ -57,7 +57,6 @@ const App: React.FC = () => {
 			console.log(getWeather)
 			console.log(getWeather.data)
 			setWeatherData(getWeather.data)
-			//return getWeather.data	
 		}
 		catch(error){
 			console.error(error);
@@ -68,7 +67,7 @@ const App: React.FC = () => {
 		<div className='h-max flex flex-col bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
 			<h1 className="flex justify-center mt-20 text-4xl text-gray-600 font-roboto overline">METEOR</h1>
 			<InputField city={city} setCity={setCity} handleFormSubmit={handleFormSubmit}/>
-			<DataDisplay/>
+			<DataDisplay data={weatherData}/>
 		</div>
 	)
 	}
