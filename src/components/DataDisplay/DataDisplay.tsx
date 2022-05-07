@@ -1,16 +1,21 @@
 import React from 'react'
+import {Main} from '../App/App'
 
-const DataDisplay: React.FC = (data) => {
+interface Props {
+  data: Main | null | undefined
+}
+
+const DataDisplay: React.FC<Props> = ({data}) => {
+//  const kelvintoCelsius = (x:number) => {}
   return (
     <div className='h-screen flex justify-center items-center flex-col bg-gradient-to-b from-sky-200 to-sky-400'>
-      <h1>weather[0].description</h1>
-      <h2>Temperature : main.temp</h2>
-      <p>Ressenti : main.feels_like</p>
-      <p>Temperature minimum : main.temp_min</p>
-      <p>Temperature minimum : main.temp_max</p>
-      <p>Pression : main.pressure</p>
-      <p>Humidité : main.humidity</p>
-      {console.log(data)}
+      <h1 className='uppercase'>{data?.weather[0].description}</h1>
+      <h2>Temperature : {data?.main.temp}</h2>
+      <p>Ressenti : {data?.main.feels_like}</p>
+      <p>Temperature minimum : {data?.main.temp_min}</p>
+      <p>Temperature minimum : {data?.main.temp_max}</p>
+      <p>Pression : {data?.main.pressure}</p>
+      <p>Humidité : {data?.main.humidity}</p>
     </div>
   )
 }

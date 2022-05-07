@@ -10,7 +10,7 @@ interface Weather {
 	description: string, 
 	icon: string
 }
-interface Main {
+export interface Main {
 	clouds: {
 		all: number
 	}
@@ -54,8 +54,6 @@ const App: React.FC = () => {
 				method: 'get',
 				url: `${apiUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
 			})
-			console.log(getWeather)
-			console.log(getWeather.data)
 			setWeatherData(getWeather.data)
 		}
 		catch(error){
