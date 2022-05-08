@@ -10,7 +10,7 @@ interface Weather {
 	description: string, 
 	icon: string
 }
-interface Main {
+export interface Main {
 	clouds: {
 		all: number
 	}
@@ -54,20 +54,18 @@ const App: React.FC = () => {
 				method: 'get',
 				url: `${apiUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
 			})
-			console.log(getWeather)
-			console.log(getWeather.data)
 			setWeatherData(getWeather.data)
 		}
 		catch(error){
 			console.error(error);
 		}
 	}
-	
+
 	return(
 		<div className='h-max flex flex-col bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
 			<h1 className="flex justify-center mt-20 text-4xl text-gray-600 font-roboto overline">METEOR</h1>
 			<InputField city={city} setCity={setCity} handleFormSubmit={handleFormSubmit}/>
-			<DataDisplay data={weatherData}/>
+			<DataDisplay data={weatherData} city={city}/>
 		</div>
 	)
 	}
