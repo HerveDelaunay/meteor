@@ -60,12 +60,12 @@ const App: React.FC = () => {
 			console.error(error);
 		}
 	}
-	
+
 	return(
 		<div className='h-max flex flex-col bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
 			<h1 className="flex justify-center mt-20 text-4xl text-gray-600 font-roboto overline">METEOR</h1>
 			<InputField city={city} setCity={setCity} handleFormSubmit={handleFormSubmit}/>
-			<DataDisplay data={weatherData}/>
+			<DataDisplay data={weatherData} city={city}/>
 		</div>
 	)
 	}

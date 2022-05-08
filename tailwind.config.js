@@ -15,7 +15,9 @@ module.exports = {
       colors: {
         'blueG': '#8EC5FC',
         'purpleG': '#C850C0',
-        'yellowG': '#E0C3FC'
+        'yellowG': '#E0C3FC',
+        'ciel1': '#EAFCFF',
+        'ciel2': '#E6F4F1',
       }
     },
   },
