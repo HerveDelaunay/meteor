@@ -13,6 +13,9 @@ const DataDisplay: React.FC<Props> = ({data, city}) => {
       return celsius
     }
  }
+  const hectopascalToBar = (x: number | undefined) => {
+    if (x !== undefined) return x/1000
+  }
  
   return (
     <div className='h-screen bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
@@ -36,7 +39,7 @@ const DataDisplay: React.FC<Props> = ({data, city}) => {
           <div className='border-t border-black mt-16 p-1'>Temperature max</div>
         </div>
         <div className='flex flex-col items-center justify-center text-gray-600 font-roboto text-xl bg-gradient-to-r from-purple-200 to-pink-100 p-3 drop-shadow-2xl rounded-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 w-48 h-64'>
-          <div className='text-8xl mt-8 relative'>{data?.main.pressure}<span className='text-base absolute top-0 right-0'>hPa</span></div>
+          <div className='text-8xl mt-8 relative'>{hectopascalToBar(data?.main.pressure)}<span className='text-base absolute top-0 right-0'>bar</span></div>
           <div className='border-t border-black mt-16 p-1'>Pression</div>
         </div>
         <div className='flex flex-col items-center justify-center text-gray-600 font-roboto text-xl bg-pink-100 p-3 drop-shadow-2xl rounded-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 w-48 h-64'>
