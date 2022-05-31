@@ -2,7 +2,7 @@ import React from 'react'
 import {Main} from '../App/App'
 
 interface Props {
-  data: Main | null | undefined
+  data: Main
   city: string
 }
 

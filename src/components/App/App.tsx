@@ -1,5 +1,5 @@
 import './styles.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import InputField from '../InputField/InputField'
 import axios from 'axios'
 import DataDisplay from '../DataDisplay/DataDisplay'
@@ -32,7 +32,7 @@ const App: React.FC = () => {
 	const [city, setCity] = useState<string>("")
 	// const [lat, setLat] = useState<number>()
 	// const [lon, setLon] = useState<number>()
-	const [weatherData, setWeatherData] = useState<Main | null>()
+	const [weatherData, setWeatherData] = useState<Main>()
 	const apiUrl = 'http://api.openweathermap.org'
 	const apiKey= process.env.REACT_APP_API_KEY
 	const handleFormSubmit = (event:React.FormEvent<HTMLFormElement>) => {
@@ -60,14 +60,25 @@ const App: React.FC = () => {
 			console.error(error);
 		}
 	}
+	const scrollToDataDisplay = () => {
+		window.scrollTo({
+			top: window.outerHeight, 
+			behavior: 'smooth'
+		})
+	}
+
+	useEffect(() => {
+		if (!weatherData) return
+		scrollToDataDisplay()
+	}, [weatherData])
 
 	return(
 		<div className='h-max flex flex-col bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
 			<h1 className="flex justify-center mt-20 text-4xl text-gray-600 font-roboto overline">METEOR</h1>
 			<InputField city={city} setCity={setCity} handleFormSubmit={handleFormSubmit}/>
-			<DataDisplay data={weatherData} city={city}/>
+			{weatherData && <DataDisplay data={weatherData} city={city}/>}
 		</div>
 	)
-	}
+}
 
 export default App
