@@ -2,7 +2,7 @@ import React from 'react'
 import {Main} from '../App/App'
 
 interface Props {
-  data: Main | null | undefined
+  data: Main
   city: string
 }
 
@@ -15,7 +15,7 @@ const DataDisplay: React.FC<Props> = ({data, city}) => {
   }
  
   return (
-    <div className='h-screen bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
+    <div id='info' className='h-screen bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
       {/* <div className='uppercase text-4xl'>{data?.weather[0].description}</div> */}
       <h1 className='font-roboto overline uppercase text-4xl text-gray-600 basis-full text-center mt-20'>{city}</h1>
       <div className="h-2/3 mt-10 flex place-content-evenly flex-row flex-wrap items-center">
