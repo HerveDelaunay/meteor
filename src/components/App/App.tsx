@@ -60,11 +60,16 @@ const App: React.FC = () => {
 			console.error(error);
 		}
 	}
+	const scrollToDataDisplay = () => {
+		window.scrollTo({
+			top: window.outerHeight, 
+			behavior: 'smooth'
+		})
+	}
 
 	useEffect(() => {
 		if (!weatherData) return
-		window.location.hash = ''
-		window.location.hash = 'info'
+		scrollToDataDisplay()
 	}, [weatherData])
 
 	return(
