@@ -119,10 +119,10 @@ const scrollToDataDisplay = () => {
 - Prevent the scrolling to empty data if the user's request remains unanswered : 
 
 ```ts
-	useEffect(() => {
-		if (!weatherData) return
-		scrollToDataDisplay()
-	}, [weatherData])
+useEffect(() => {
+  if (!weatherData) return
+  scrollToDataDisplay()
+}, [weatherData])
 ```
 
 If no data is found, the page won't scroll down to the "data-display" section. If there is data the page will automatically scroll to the section where the data is displayed. This process will repeat itself everytime that the data changes, thus everytime that the user submit a new location, thank to : 
@@ -134,13 +134,13 @@ If no data is found, the page won't scroll down to the "data-display" section. I
 The component ```DataDisplay``` will appear only if the weather data of the given location exists (thus not undefined) : 
 
 ```ts
-  return(
-    <div className='h-max flex flex-col bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
-      <h1 className="flex justify-center mt-20 text-4xl text-gray-600 font-roboto overline">METEOR</h1>
-      <InputField city={city} setCity={setCity} handleFormSubmit={handleFormSubmit}/>
-      {weatherData && <DataDisplay data={weatherData} city={city}/>}
-    </div>
-  )
+return(
+  <div className='h-max flex flex-col bg-gradient-to-r from-blue-300 via-purple-300 to-pink-200'>
+    <h1 className="flex justify-center mt-20 text-4xl text-gray-600 font-roboto overline">METEOR</h1>
+    <InputField city={city} setCity={setCity} handleFormSubmit={handleFormSubmit}/>
+    {weatherData && <DataDisplay data={weatherData} city={city}/>}
+  </div>
+)
 ``` 
 
 ### Continued development
