@@ -125,7 +125,7 @@ useEffect(() => {
 }, [weatherData])
 ```
 
-If no data is found, the page won't scroll down to the "data-display" section. If there is data the page will automatically scroll to the section where the data is displayed. This process will repeat itself everytime that the data changes, thus everytime that the user submit a new location, thank to : 
+If no data is found, the page won't scroll down to the "data-display" section. If there is data the page will automatically scroll to the section where the data is displayed. This process will repeat itself everytime that the data changes, thus everytime that the user submit a new location, thanks to : 
 
  ```useEffect(()=>{}, [weatherData])``` 
 
